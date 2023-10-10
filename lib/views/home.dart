@@ -11,15 +11,22 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          alarmDesctiption(
-              alarmReason: "Office",
-              alarmTime: "5:45",
-              isDay: true,
-              context: context)
-        ],
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              alarmDescription(
+                alarmReason: "Office",
+                alarmTime: "5:45",
+                isDay: true,
+                context: context,
+                alarmDays: [true, false, true, false, false, false, false],
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

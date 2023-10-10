@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wakey/utils/text_style.dart';
+import 'package:wakey/view_models/home_viewmodel.dart';
 
 Widget alarmDescription(
     {alarmReason, alarmTime, isDay, required List<bool> alarmDays, context}) {
-  return Container(
-    height: 177,
-    width: 169,
-    decoration: BoxDecoration(
-        color: const Color(0xFF34344A),
-        border: Border.all(color: Colors.transparent),
-        borderRadius: BorderRadius.circular(20)),
-    child: Padding(
-      padding: const EdgeInsets.only(left: 20, top: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+  final homeViewModel = Provider.of<HomeViewModel>(context, listen: false);
+  return Consumer<HomeViewModel>(builder: (context, value, child) {
+    return Container(
+      height: 177,
+      width: 169,
+      decoration: BoxDecoration(
+          color: const Color(0xFF34344A),
+          border: Border.all(color: Colors.transparent),
+          borderRadius: BorderRadius.circular(20)),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20, top: 10),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             alarmReason,
             style: textStyle()["titleSmall"],
@@ -60,11 +62,22 @@ Widget alarmDescription(
                     ),
                   ],
                 ));
-          }))
-        ],
+          })),
+          Switch(
+              // thumb color (round icon)
+              activeColor: Colors.amber,
+              activeTrackColor: Colors.cyan,
+              inactiveThumbColor: Colors.blueGrey.shade600,
+              inactiveTrackColor: Colors.grey.shade400,
+              splashRadius: 50.0,
+              // boolean variable value
+              value: homeViewModel.toggleAlarm,
+              // changes the state of the switch
+              onChanged: (value) => homeViewModel.onToggle()),
+        ]),
       ),
-    ),
-  );
+    );
+  });
 }
 
 String getDayName(int index) {

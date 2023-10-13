@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wakey/utils/text_style.dart';
 import 'package:wakey/widgets/alarm_description.dart';
 
 class HomeView extends StatefulWidget {
@@ -26,29 +28,51 @@ class _HomeViewState extends State<HomeView> {
         bottomNavigationBar: BottomAppBar(
           color: const Color(0xFF34344A),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               InkWell(
-                splashColor: Colors.green,
+                // splashColor: Colors.green,
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
                 onTap: () {},
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
-                      Icons.shopping_cart,
+                      Icons.alarm,
                       color: Theme.of(context).primaryColor,
                       size: 24,
                     ), // <-- Icon
-                    const Text("Buy"), // <-- Text
+                    Text(
+                      "Alarm",
+                      style: textStyle(
+                          textColor:
+                              Theme.of(context).primaryColor)["titleSmall"],
+                    ), // <-- Text
                   ],
                 ),
               ),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.alarm,
-                    size: 48,
-                  ))
+              InkWell(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () {},
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      CupertinoIcons.stopwatch,
+                      color: Theme.of(context).primaryColor,
+                      size: 24,
+                    ), // <-- Icon
+                    Text(
+                      "Stopwatch",
+                      style: textStyle(
+                          textColor:
+                              Theme.of(context).primaryColor)["titleSmall"],
+                    ), // <-- Text
+                  ],
+                ),
+              ),
             ],
           ),
         ),

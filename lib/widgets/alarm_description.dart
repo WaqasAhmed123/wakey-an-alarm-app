@@ -64,14 +64,11 @@ Widget alarmDescription(
                 ));
           })),
           Switch(
-              // thumb color (round icon)
-              // activeColor: Colors.amber,
               activeColor: const Color(0xFFFFFFFF),
               activeTrackColor: const Color(0xFFF0F757),
               inactiveThumbColor: Colors.blueGrey.shade600,
               inactiveTrackColor: Colors.grey.shade400,
               splashRadius: 50.0,
-              // boolean variable value
               value: homeViewModel.toggleAlarm,
               // changes the state of the switch
               onChanged: (value) => homeViewModel.onToggle()),

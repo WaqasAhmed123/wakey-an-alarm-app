@@ -7,4 +7,10 @@ class HomeViewModel extends ChangeNotifier {
     toggleAlarm = !toggleAlarm;
     notifyListeners();
   }
+
+  int selectedIndex = 0;
+  onItemTapped(int index) {
+    selectedIndex = index;
+    notifyListeners();
+  }
 }

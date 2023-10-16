@@ -7,7 +7,7 @@ stopwatchButton({context, buttonTitle, buttonColor, textColor, onTap}) {
     onTap: onTap,
     child: Container(
       height: 52,
-      width: 124,
+      width: MediaQuery.sizeOf(context).width * 0.3,
       decoration: BoxDecoration(
           color: buttonColor,
           border: Border.all(),

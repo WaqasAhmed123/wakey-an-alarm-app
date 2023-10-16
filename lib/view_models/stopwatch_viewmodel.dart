@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:typed_data';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class StopWatchViewModel extends ChangeNotifier {
@@ -16,9 +18,22 @@ class StopWatchViewModel extends ChangeNotifier {
     }
   }
 
+  void cancelStopwatch() {
+    stopwatch.stop();
+    stopwatch.reset();
+    if (_timer.isActive) {
+      _timer.cancel(); // Cancel the timer if it's active
+    }
+    isRunning = false;
+    notifyListeners();
+  }
+
   void startStopwatch() {
     stopwatch.start();
     isRunning = true;
+    if (!_timer.isActive) {
+      _timer = Timer.periodic(const Duration(milliseconds: 100), _updateTime);
+    }
     notifyListeners();
   }
 
@@ -42,4 +57,5 @@ class StopWatchViewModel extends ChangeNotifier {
     _timer.cancel();
     super.dispose();
   }
+
 }

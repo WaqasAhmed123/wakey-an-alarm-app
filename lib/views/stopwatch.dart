@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wakey/view_models/stopwatch_viewmodel.dart';
 import 'package:wakey/widgets/stopwatch_button.dart';
-import 'package:audioplayers/audioplayers.dart';
 
 class StopWatchView extends StatefulWidget {
   const StopWatchView({super.key});
@@ -15,7 +13,8 @@ class StopWatchView extends StatefulWidget {
 class _StopWatchViewState extends State<StopWatchView> {
   @override
   Widget build(BuildContext context) {
-    final player = AudioPlayer();
+    // final player = AudioPlayer();
+    // player.setSource(AssetSource('audio/timer.mp3'));
 
     StopWatchViewModel viewModel =
         Provider.of<StopWatchViewModel>(context, listen: false);
@@ -40,10 +39,12 @@ class _StopWatchViewState extends State<StopWatchView> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 stopwatchButton(
-                    onTap: () {
-                      viewModel.startStopwatch();
+                    onTap: () async {
+                      // viewModel.startStopwatch();
                       // viewModel.audioPlayer.
-                      player.play(AssetSource('audio/timer.mp3'));
+                      // await player.play(AssetSource('audio/timer.mp3'));
+                      // await player.play(AssetSource('audio/timer.mp3'));
+                      // await player.play(UrlSource("https://pixabay.com/sound-effects/clock-ticking-60-second-countdown-118231/"));
                     },
                     textColor: const Color(0xFF34344A),
                     context: context,
@@ -52,7 +53,7 @@ class _StopWatchViewState extends State<StopWatchView> {
                 stopwatchButton(
                     onTap: () {
                       viewModel.stopStopwatch();
-                      player.pause();
+                      // player.pause();
                     },
                     textColor: const Color(0xFFFFFFFF),
                     context: context,
@@ -61,7 +62,7 @@ class _StopWatchViewState extends State<StopWatchView> {
                 stopwatchButton(
                     onTap: () {
                       viewModel.cancelStopwatch();
-                      player.stop();
+                      // player.stop();
                     },
                     textColor: const Color(0xFFFFFFFF),
                     context: context,

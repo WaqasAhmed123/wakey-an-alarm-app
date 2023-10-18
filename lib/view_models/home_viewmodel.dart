@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wakey/views/set_alarm.dart';
 
 class HomeViewModel extends ChangeNotifier {
   bool toggleAlarm = false;
@@ -11,5 +12,12 @@ class HomeViewModel extends ChangeNotifier {
   onItemTapped(int index) {
     selectedIndex = index;
     notifyListeners();
+  }
+
+  navigateToSetAlarm({context}) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const SetAlarmView()),
+    );
   }
 }

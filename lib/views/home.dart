@@ -23,7 +23,9 @@ class _HomeViewState extends State<HomeView> {
                 FloatingActionButtonLocation.centerDocked,
             floatingActionButton: FloatingActionButton(
               shape: const CircleBorder(),
-              onPressed: () {},
+              onPressed: () {
+                homeViewModel.navigateToSetAlarm(context: context);
+              },
               backgroundColor: Theme.of(context).primaryColor,
               child: const Icon(
                 Icons.add,

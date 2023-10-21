@@ -92,31 +92,53 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                   itemExtent: 32,
                   scrollController: FixedExtentScrollController(
                       initialItem:
-                          2), // Initial middle element is 3 (0-based index)
+                          3), // Initial middle element is 3 (0-based index)
                   onSelectedItemChanged: (index) {
                     setState(() {
                       selectedHour = index +
                           1; // Adjust the selectedHour value based on the initial index
                     });
                   },
-                  children: List<Widget>.generate(5, (index) {
-                    int displayedValue = index + 1;
-                    bool isBold = index == 2; // Middle element is bold
-                    return Center(
-                      child: Text(
-                        '$displayedValue',
-                        style: TextStyle(
-                          color: isBold
-                              ? Colors.white
-                              : Colors
-                                  .grey, // Set color based on bold or regular
-                          fontWeight: isBold
-                              ? FontWeight.bold
-                              : FontWeight.normal, // Set bold or regular
-                        ),
-                      ),
-                    );
-                  }),
+                  children: [
+                    ListView.builder(
+                        itemCount: 12,
+                        itemBuilder: (context, index) {
+                          int displayedValue = index + 1;
+                          bool isBold = index == 2;
+                          return Center(
+                            child: Text(
+                              '$displayedValue',
+                              style: TextStyle(
+                                color: isBold
+                                    ? Colors.white
+                                    : Colors
+                                        .grey, // Set color based on bold or regular
+                                fontWeight: isBold
+                                    ? FontWeight.bold
+                                    : FontWeight.normal, // Set bold or regular
+                              ),
+                            ),
+                          );
+                        })
+                  ],
+                  // children: List<Widget>.generate(5, (index) {
+                  //   int displayedValue = index + 1;
+                  //   bool isBold = index == 2; // Middle element is bold
+                  //   return Center(
+                  //     child: Text(
+                  //       '$displayedValue',
+                  //       style: TextStyle(
+                  //         color: isBold
+                  //             ? Colors.white
+                  //             : Colors
+                  //                 .grey, // Set color based on bold or regular
+                  //         fontWeight: isBold
+                  //             ? FontWeight.bold
+                  //             : FontWeight.normal, // Set bold or regular
+                  //       ),
+                  //     ),
+                  //   );
+                  // }),
                 ))
               ])
               // Alarm Time Selection

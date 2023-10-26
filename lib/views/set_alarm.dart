@@ -1,44 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:wakey/utils/text_style.dart';
-
-// class SetAlarmView extends StatefulWidget {
-//   const SetAlarmView({super.key});
-//   @override
-//   State<SetAlarmView> createState() => _SetAlarmViewState();
-// }
-
-// class _SetAlarmViewState extends State<SetAlarmView> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea(
-//       child: Scaffold(
-//         body: Column(
-//           children: [
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceAround,
-//               children: [
-//                 IconButton(
-//                     onPressed: () {},
-//                     icon: const Icon(
-//                       Icons.close,
-//                       color: Colors.white,
-//                     )),
-//                 Text(
-//                   "Add Alarm",
-//                   style: textStyle()['titleMedium'],
-//                 ),
-//                 IconButton(
-//                     onPressed: () {},
-//                     icon: const Icon(Icons.check, color: Colors.white)),
-//               ],
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wakey/utils/text_style.dart';
@@ -89,15 +48,28 @@ class _SetAlarmViewState extends State<SetAlarmView> {
               child: Column(children: [
                 Expanded(
                     child: ListWheelScrollView.useDelegate(
+                        physics: const FixedExtentScrollPhysics(),
                         itemExtent: 40,
+                        onSelectedItemChanged: (index) {
+                          setState(() {
+                            selectedHour = index + 1;
+                            print(selectedHour);
+                          });
+                        },
                         childDelegate: ListWheelChildBuilderDelegate(
                             childCount: 12,
                             builder: (context, index) {
                               int displayedValue = index + 1;
                               return Center(
                                 child: Text(
-                                  '$displayedValue',
-                                  style: const TextStyle(color: Colors.white),
+                                  displayedValue < 10
+                                      ? '0$displayedValue'
+                                      : '$displayedValue',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      color: displayedValue == selectedHour
+                                          ? Colors.white
+                                          : Colors.white.withOpacity(0.5)),
                                 ),
                               );
                             })))

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wakey/views/stopwatch.dart';
+import 'package:wakey/views/stopwatch_view.dart';
 import 'package:wakey/widgets/alarm_description.dart';
 
 import '../view_models/home_viewmodel.dart';

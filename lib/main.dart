@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:wakey/utils/text_style.dart';
 import 'package:wakey/view_models/home_viewmodel.dart';
 import 'package:wakey/view_models/stopwatch_viewmodel.dart';
-import 'package:wakey/views/home.dart';
-import 'package:wakey/views/stopwatch.dart';
+import 'package:wakey/views/home_view.dart';
+import 'package:wakey/views/stopwatch_view.dart';
 
 void main() {
   runApp(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wakey/views/set_alarm.dart';
+import 'package:wakey/views/set_alarm_view.dart';
 
 class HomeViewModel extends ChangeNotifier {
   bool toggleAlarm = false;

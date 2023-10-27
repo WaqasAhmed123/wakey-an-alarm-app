@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wakey/utils/text_style.dart';
+import 'package:wakey/widgets/alarm_selector.dart';
 
 class SetAlarmView extends StatefulWidget {
   const SetAlarmView({Key? key}) : super(key: key);
@@ -45,35 +46,16 @@ class _SetAlarmViewState extends State<SetAlarmView> {
               // color: const Color(0xFF34344A),
               color: Theme.of(context).primaryColorDark,
               height: MediaQuery.sizeOf(context).height * 0.3,
-              child: Column(children: [
-                Expanded(
-                    child: ListWheelScrollView.useDelegate(
-                        physics: const FixedExtentScrollPhysics(),
-                        itemExtent: 40,
-                        onSelectedItemChanged: (index) {
-                          setState(() {
-                            selectedHour = index + 1;
-                            print(selectedHour);
-                          });
-                        },
-                        childDelegate: ListWheelChildBuilderDelegate(
-                            childCount: 12,
-                            builder: (context, index) {
-                              int displayedValue = index + 1;
-                              return Center(
-                                child: Text(
-                                  displayedValue < 10
-                                      ? '0$displayedValue'
-                                      : '$displayedValue',
-                                  style: TextStyle(
-                                      fontSize: 22,
-                                      color: displayedValue == selectedHour
-                                          ? Colors.white
-                                          : Colors.white.withOpacity(0.5)),
-                                ),
-                              );
-                            })))
-              ]),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: alarmTimeSelctor(context: context, childCount: 12),
+                  ),
+                  Expanded(
+                    child: alarmTimeSelctor(context: context, childCount: 60),
+                  )
+                ],
+              ),
             ),
           ],
         ),

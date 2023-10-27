@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wakey/utils/text_style.dart';
 import 'package:wakey/view_models/home_viewmodel.dart';
+import 'package:wakey/view_models/set_alarm_viewmodel.dart';
 import 'package:wakey/view_models/stopwatch_viewmodel.dart';
 import 'package:wakey/views/home_view.dart';
+import 'package:wakey/views/set_alarm_view.dart';
 import 'package:wakey/views/stopwatch_view.dart';
 
 void main() {
@@ -16,6 +18,9 @@ void main() {
         ChangeNotifierProvider<StopWatchViewModel>(
             create: (context) => StopWatchViewModel()),
         Provider(create: (context) => const StopWatchView()),
+        ChangeNotifierProvider<SetAlarmViewModel>(
+            create: (context) => SetAlarmViewModel()),
+        Provider(create: (context) => const SetAlarmView()),
       ],
       child: const MyApp(),
     ),

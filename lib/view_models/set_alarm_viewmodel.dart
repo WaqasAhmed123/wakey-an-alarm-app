@@ -6,4 +6,15 @@ class SetAlarmViewModel extends ChangeNotifier {
     getSelectedHour = selectedHour;
     notifyListeners();
   }
+
+  int? getSelectedMin;
+  setSelectedMin({selectedMin}) {
+    getSelectedMin = selectedMin;
+    notifyListeners();
+  }
+  String? amOrPm;
+  setSelectedMin({selectedMin}) {
+    getSelectedMin = selectedMin;
+    notifyListeners();
+  }
 }

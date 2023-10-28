@@ -6,6 +6,7 @@ import '../view_models/set_alarm_viewmodel.dart';
 alarmTimeSelctor({
   context,
   childCount,
+  columnOfScroller
 }) {
   final setAlarmViewModel =
       Provider.of<SetAlarmViewModel>(context, listen: false);
@@ -14,7 +15,12 @@ alarmTimeSelctor({
       physics: const FixedExtentScrollPhysics(),
       itemExtent: 40,
       onSelectedItemChanged: (index) {
-        setAlarmViewModel.setSelectedHour(selectedHour: index + 1);
+        // setAlarmViewModel.setSelectedHour(selectedHour: index + 1);
+        columnOfScroller==1?
+        setAlarmViewModel.setSelectedHour(selectedHour: index + 1):
+        columnOfScroller==2?
+        setAlarmViewModel.setSelectedMin(selectedMin: index + 1):
+        
         print(setAlarmViewModel.getSelectedHour);
         //  = index + 1;
       },

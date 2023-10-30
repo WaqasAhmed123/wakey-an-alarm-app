@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wakey/utils/text_style.dart';
 import 'package:wakey/widgets/alarm_selector.dart';
 
+import '../widgets/listtile_container.dart';
+
 class SetAlarmView extends StatefulWidget {
   const SetAlarmView({Key? key}) : super(key: key);
 
@@ -51,6 +53,7 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                 // color: const Color(0xFF34344A),
                 height: MediaQuery.sizeOf(context).height * 0.3,
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       child: alarmTimeSelctor(
@@ -71,6 +74,14 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                   ],
                 ),
               ),
+              Container(
+                child: Column(children: [
+                  listtileContainer(
+                      leadingText: "knfnfkjah",
+                      onTap: () {},
+                      tralingText: "kfja")
+                ]),
+              )
             ],
           ),
         ),

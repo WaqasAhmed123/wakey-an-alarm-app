@@ -12,9 +12,9 @@ class SetAlarmView extends StatefulWidget {
 }
 
 class _SetAlarmViewState extends State<SetAlarmView> {
-  int selectedHour = 0;
-  int selectedMinute = 0;
-  bool isAm = true;
+  // int selectedHour = 0;
+  // int selectedMinute = 0;
+  // bool isAm = true;
 
   @override
   Widget build(BuildContext context) {
@@ -74,14 +74,8 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                   ],
                 ),
               ),
-              Container(
-                child: Column(children: [
-                  listtileContainer(
-                      leadingText: "knfnfkjah",
-                      onTap: () {},
-                      tralingText: "kfja")
-                ]),
-              )
+              listtileContainer(
+                  leadingText: "knfnfkjah", onTap: () {}, tralingText: "kfja")
             ],
           ),
         ),

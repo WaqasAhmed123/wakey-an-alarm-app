@@ -7,6 +7,7 @@ listtileContainer({leadingText, tralingText, onTap}) {
     child: ListTile(
       leading: Text(leadingText,style: textStyle()["titleSmall"],),
       trailing: Row(
+         mainAxisSize: MainAxisSize.min,
         children: [
           Text(tralingText),
           const Icon(Icons.keyboard_arrow_right_rounded)

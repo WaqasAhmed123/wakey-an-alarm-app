@@ -75,7 +75,9 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                 ),
               ),
               listtileContainer(
-                  leadingText: "knfnfkjah", onTap: () {}, tralingText: "kfja")
+                  leadingText: "Repeat", onTap: () {}, tralingText: "Once"),
+              listtileContainer(
+                  leadingText: "Label", onTap: () {}, tralingText: ""),
             ],
           ),
         ),

@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
 class SetAlarmViewModel extends ChangeNotifier {
- bool toggleAlarm = false;
-  onToggle() {
-    toggleAlarm = !toggleAlarm;
+  bool vibrate = false;
+  setVibration() {
+    vibrate = !vibrate;
+    notifyListeners();
+  }
+
+  bool deleteAlarm = false;
+  setDeletion() {
+    deleteAlarm = !deleteAlarm;
     notifyListeners();
   }
 

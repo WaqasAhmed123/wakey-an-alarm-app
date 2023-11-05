@@ -95,7 +95,9 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                   onTap: () {},
                   tralingText: "",
                   context: context,
-                  isToggleButton: true),
+                  isToggleButton: true,
+                  vibrationWidet: true
+                  ),
             ],
           ),
         ),

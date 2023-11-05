@@ -3,9 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:wakey/utils/text_style.dart';
 import 'package:wakey/view_models/set_alarm_viewmodel.dart';
 
-import '../view_models/home_viewmodel.dart';
-
-listtileContainer({leadingText, tralingText, onTap, isToggleButton=false, context}) {
+listtileContainer(
+    {leadingText,
+    tralingText,
+    onTap,
+    isToggleButton = false,
+    context,
+    vibrationWidet=false}) {
   final setAlarmViewModel =
       Provider.of<SetAlarmViewModel>(context, listen: false);
 
@@ -24,9 +28,11 @@ listtileContainer({leadingText, tralingText, onTap, isToggleButton=false, contex
                   inactiveThumbColor: Colors.blueGrey.shade600,
                   inactiveTrackColor: Colors.grey.shade400,
                   splashRadius: 50.0,
-                  value: value.toggleAlarm,
+                  value: vibrationWidet ? value.vibrate : value.deleteAlarm,
                   // changes the state of the switch
-                  onChanged: (value) => setAlarmViewModel.onToggle());
+                  onChanged: (value) => vibrationWidet
+                      ? setAlarmViewModel.setVibration()
+                      : setAlarmViewModel.setDeletion());
             })
           : Row(
               mainAxisSize: MainAxisSize.min,

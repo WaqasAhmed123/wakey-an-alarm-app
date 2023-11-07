@@ -40,7 +40,7 @@ class _StopWatchViewState extends State<StopWatchView> {
               children: [
                 stopwatchButton(
                     onTap: () async {
-                      // viewModel.startStopwatch();
+                      viewModel.startStopwatch();
                       // viewModel.audioPlayer.
                       // await player.play(AssetSource('audio/timer.mp3'));
                       // await player.play(AssetSource('audio/timer.mp3'));

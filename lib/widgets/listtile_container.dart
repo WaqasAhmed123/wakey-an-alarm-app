@@ -18,7 +18,8 @@ listtileContainer(
       splashFactory: NoSplash.splashFactory,
     ),
     child: InkWell(
-      splashColor: Colors.transparent,
+      borderRadius: BorderRadius.circular(10.0),
+      // splashColor: Colors.transparent,
       onTap: onTap,
       child: ListTile(
         leading: Text(
@@ -42,8 +43,14 @@ listtileContainer(
             : Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(tralingText),
-                  const Icon(Icons.keyboard_arrow_right_rounded)
+                  Text(tralingText,
+                      style: textStyle(
+                          textColor:
+                              Colors.white.withOpacity(0.5))["bodySmall"]),
+                  Icon(
+                    Icons.keyboard_arrow_right_rounded,
+                    color: Colors.white.withOpacity(0.5),
+                  )
                 ],
               ),
       ),

@@ -45,20 +45,25 @@ alarmDays({context}) {
           ),
           actions: <Widget>[
             const Divider(thickness: 1, color: Colors.black),
-            TextButton(
-              child: const Text('Cancel'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: const Text('Done'),
-              onPressed: () {
-                // Perform the desired action with selectedDays
-                print('Selected Days: $selectedDays');
-                Navigator.of(context).pop();
-              },
-            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                  child: const Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  child: const Text('Done'),
+                  onPressed: () {
+                    // Perform the desired action with selectedDays
+                    print('Selected Days: $selectedDays');
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            )
           ],
         );
       });

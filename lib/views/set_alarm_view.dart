@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wakey/utils/text_style.dart';
+import 'package:wakey/widgets/alarm_days.dart';
 import 'package:wakey/widgets/alarm_selector.dart';
 
 import '../widgets/listtile_container.dart';
@@ -76,7 +77,9 @@ class _SetAlarmViewState extends State<SetAlarmView> {
               ),
               listtileContainer(
                   leadingText: "Repeat",
-                  onTap: () {},
+                  onTap: () {
+                    alarmDays(context: context);
+                  },
                   tralingText: "Once",
                   context: context),
               listtileContainer(

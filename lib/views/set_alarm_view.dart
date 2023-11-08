@@ -96,8 +96,18 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                   tralingText: "",
                   context: context,
                   isToggleButton: true,
-                  vibrationWidet: true
+                  vibrationWidet: true),
+              InkWell(
+                borderRadius: BorderRadius.circular(10.0),
+                splashColor: Colors.transparent,
+                onTap: () {},
+                child: ListTile(
+                  leading: Text(
+                    "Select Location",
+                    style: textStyle()["titleSmall"],
                   ),
+                ),
+              )
             ],
           ),
         ),

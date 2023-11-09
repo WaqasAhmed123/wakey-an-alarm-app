@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wakey/view_models/set_alarm_viewmodel.dart';
 
 List<String> days = [
   'Monday',
@@ -11,6 +13,8 @@ List<String> days = [
 ];
 List<bool> selectedDays = [false, false, false, false, false, false, false];
 alarmDays({context}) {
+  final setAlarmViewModel =
+      Provider.of<SetAlarmViewModel>(context, listen: false);
   return showDialog(
       context: context,
       builder: (context) {
@@ -22,21 +26,29 @@ alarmDays({context}) {
             child: Column(
               children: [
                 Expanded(
-                  child: ListView.builder(
-                    itemCount: days.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                        title: Text(days[index]),
-                        // leading: const Icon(Icons.calendar_today),
-                        trailing: Checkbox(
-                          value: selectedDays[index],
-                          onChanged: (value) {
-                            // setState(() {
-                            selectedDays[index] = value!;
-                            // });
+                  child: StatefulBuilder(
+                    builder: (context, setState) {
+                      return Consumer<SetAlarmViewModel>(
+                          builder: (context, value, child) {
+                        return ListView.builder(
+                          itemCount: value.days.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return ListTile(
+                              title: Text(value.days[index]),
+                              // leading: const Icon(Icons.calendar_today),
+                              trailing: Checkbox(
+                                value: value.selectedDays[index],
+                                onChanged: (value) {
+                                  // setState(() {
+                                  setAlarmViewModel.selectedDays[index] =
+                                      value!;
+                                  // });
+                                },
+                              ),
+                            );
                           },
-                        ),
-                      );
+                        );
+                      });
                     },
                   ),
                 ),

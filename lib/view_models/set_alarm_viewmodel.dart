@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
 
 class SetAlarmViewModel extends ChangeNotifier {
+
+List<String> days = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday'
+];
+List<bool> selectedDays = [false, false, false, false, false, false, false];
+
   bool vibrate = false;
   setVibration() {
     vibrate = !vibrate;

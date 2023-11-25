@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SetAlarmViewModel extends ChangeNotifier {
+  TextEditingController alarmLabel = TextEditingController();
+
   // Map<String, dynamic> alarmDetails = {};
   Map<String, bool> alarmDays = {
     'Monday': false,

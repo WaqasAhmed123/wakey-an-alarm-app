@@ -12,7 +12,7 @@ import 'package:wakey/view_models/set_alarm_viewmodel.dart';
 //   'Sunday'
 // ];
 // List<bool> selectedDays = [false, false, false, false, false, false, false];
-alarmDays({context}) {
+alarmDaysWidget({context}) {
   final setAlarmViewModel =
       Provider.of<SetAlarmViewModel>(context, listen: false);
   return showDialog(

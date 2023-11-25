@@ -37,6 +37,14 @@ alarmDays({context}) {
                             title: Text(value.alarmDays.keys.elementAt(index)),
                             // leading: const Icon(Icons.calendar_today),
                             trailing: Checkbox(
+                              fillColor:
+                                  MaterialStateProperty.resolveWith<Color?>(
+                                      (states) {
+                                if (states.contains(MaterialState.selected)) {
+                                  return Theme.of(context).primaryColorDark;
+                                }
+                                return null; // Use null to use the default color when not selected
+                              }),
                               value: value.alarmDays.values.elementAt(index),
                               onChanged: (value) {
                                 setState(() {
@@ -60,13 +68,19 @@ alarmDays({context}) {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
-                    child: const Text('Cancel'),
+                    child: const Text(
+                      'Cancel',
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
                   ),
                   TextButton(
-                    child: const Text('Done'),
+                    child: const Text('Done',
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold)),
                     onPressed: () {
                       // Perform the desired action with selectedDays
                       // print('Selected Days: ${setAlarmViewModel.selectedDays}');

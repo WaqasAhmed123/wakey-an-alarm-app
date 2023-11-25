@@ -17,7 +17,30 @@ alarmLabelWidget({context}) {
               // height: MediaQuery.sizeOf(context).height * 0.35,
               child: TextFormField(
                 controller: setAlarmViewModel.alarmLabel,
-                
+                autocorrect: false,
+                enableSuggestions: false,
+                cursorColor: Theme.of(context).scaffoldBackgroundColor,
+                decoration: InputDecoration(
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                        color: Theme.of(context)
+                            .primaryColor), // Transparent underline when focused
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                        color: Theme.of(context)
+                            .primaryColor), // Transparent underline when not focused
+                  ),
+                  // border: OutlineInputBorder(
+                  //   borderSide: BorderSide(color: Colors.grey),
+                  // ),
+                  // enabledBorder: OutlineInputBorder(
+                  //   borderSide: BorderSide(color: Colors.grey),
+                  // ),
+                  // focusedBorder: OutlineInputBorder(
+                  //   borderSide: BorderSide(color: Colors.grey),
+                  // ),
+                ),
               ),
             ),
             actions: [

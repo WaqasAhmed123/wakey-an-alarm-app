@@ -64,6 +64,14 @@ class SetAlarmViewModel extends ChangeNotifier {
         permission == LocationPermission.whileInUse;
   }
 
+  // getCurrentLocation() {
+  //   return {"latitude": currentLocationLat, "longitude": currentLocationLng};
+  //   notifyListeners();
+  // }
+
+  late double currentLocationLat;
+  late double currentLocationLng;
+
   getCurrentLocation() async {
     bool locationGranted = await _requestLocationPermission();
 
@@ -71,6 +79,9 @@ class SetAlarmViewModel extends ChangeNotifier {
       try {
         Position position = await Geolocator.getCurrentPosition(
             desiredAccuracy: LocationAccuracy.high);
+        currentLocationLat = position.latitude;
+        currentLocationLng = position.longitude;
+        notifyListeners();
         // currentLocation = LatLng(
         //   position.latitude,
         //   position.longitude,

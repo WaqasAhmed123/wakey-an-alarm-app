@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wakey/utils/text_style.dart';
+import 'package:wakey/views/location_select.dart';
 import 'package:wakey/widgets/alarm_days.dart';
 import 'package:wakey/widgets/alarm_label.dart';
 import 'package:wakey/widgets/alarm_selector.dart';
 
 import '../view_models/set_alarm_viewmodel.dart';
 import '../widgets/listtile_container.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class SetAlarmView extends StatefulWidget {
   const SetAlarmView({Key? key}) : super(key: key);
@@ -22,8 +24,8 @@ class _SetAlarmViewState extends State<SetAlarmView> {
 
   @override
   Widget build(BuildContext context) {
-     final setAlarmViewModel =
-      Provider.of<SetAlarmViewModel>(context, listen: false);
+    final setAlarmViewModel =
+        Provider.of<SetAlarmViewModel>(context, listen: false);
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -35,7 +37,7 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     IconButton(
-                        onPressed: ()=>Navigator.pop(context),
+                        onPressed: () => Navigator.pop(context),
                         icon: const Icon(
                           Icons.close,
                           color: Colors.white,
@@ -76,7 +78,9 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                       ),
                       Expanded(
                         child: alarmTimeSelctor(
-                            context: context, childCount: 2, columnOfScroller: 3),
+                            context: context,
+                            childCount: 2,
+                            columnOfScroller: 3),
                       ),
                     ],
                   ),
@@ -90,7 +94,7 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                     context: context),
                 listtileContainer(
                     leadingText: "Label",
-                    onTap: ()=>alarmLabelWidget(context: context),
+                    onTap: () => alarmLabelWidget(context: context),
                     tralingText: "",
                     context: context),
                 listtileContainer(
@@ -109,7 +113,10 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                 InkWell(
                   borderRadius: BorderRadius.circular(10.0),
                   splashColor: Colors.transparent,
-                  onTap: ()async=>await setAlarmViewModel.getCurrentLocation(),
+                  onTap: () async {
+                    await setAlarmViewModel.getCurrentLocation();
+                    Navigator.push(context,MaterialPageRoute(builder: (context) => const LocationSelect())) ;
+                  },
                   child: ListTile(
                     leading: Text(
                       "Select Location",

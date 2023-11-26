@@ -18,6 +18,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     
     return Consumer<HomeViewModel>(builder: (context, homeViewModel, child) {
+      
       return SafeArea(
         child: Scaffold(
             floatingActionButtonLocation:

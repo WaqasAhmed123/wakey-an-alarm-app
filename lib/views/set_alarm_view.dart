@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wakey/utils/text_style.dart';
 import 'package:wakey/widgets/alarm_days.dart';
 import 'package:wakey/widgets/alarm_label.dart';
 import 'package:wakey/widgets/alarm_selector.dart';
 
+import '../view_models/set_alarm_viewmodel.dart';
 import '../widgets/listtile_container.dart';
 
 class SetAlarmView extends StatefulWidget {
@@ -20,6 +22,8 @@ class _SetAlarmViewState extends State<SetAlarmView> {
 
   @override
   Widget build(BuildContext context) {
+     final setAlarmViewModel =
+      Provider.of<SetAlarmViewModel>(context, listen: false);
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -105,7 +109,7 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                 InkWell(
                   borderRadius: BorderRadius.circular(10.0),
                   splashColor: Colors.transparent,
-                  onTap: () {},
+                  onTap: ()async=>await setAlarmViewModel.getCurrentLocation(),
                   child: ListTile(
                     leading: Text(
                       "Select Location",

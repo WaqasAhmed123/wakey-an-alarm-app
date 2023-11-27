@@ -23,6 +23,7 @@ class _LocationSelectState extends State<LocationSelect> {
     return Stack(children: [
       Consumer<SetAlarmViewModel>(builder: (context, value, child) {
         return GoogleMap(
+          
             onMapCreated: (GoogleMapController controller) {
               controllerCompleter.complete(controller);
             },
@@ -30,10 +31,11 @@ class _LocationSelectState extends State<LocationSelect> {
               // Update the selected location based on the camera position
               selectedLocation = position.target;
             },
-            initialCameraPosition: CameraPosition(
+            initialCameraPosition: const CameraPosition(
               // target: LatLng(37.783333, -122.416667), // Default location
-              target: LatLng(setAlarmViewModel.currentLocationLat,
-                  setAlarmViewModel.currentLocationLat), // Default location
+              target: LatLng(24.8950265, 67.0382493), // Default location
+              // target: LatLng(setAlarmViewModel.currentLocationLat,
+              //     setAlarmViewModel.currentLocationLat), // Default location
               zoom: 12.0,
             ));
       }),
@@ -51,7 +53,6 @@ class _LocationSelectState extends State<LocationSelect> {
         ),
       ),
     ]);
-    ;
   }
 }
 // locationSelectWidget({context}) {

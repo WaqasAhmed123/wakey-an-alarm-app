@@ -32,7 +32,7 @@ class _LocationSelectState extends State<LocationSelect> {
               selectedLocation = position.target;
             },
             initialCameraPosition: const CameraPosition(
-              // target: LatLng(37.783333, -122.416667), // Default location
+              // target: LatLng(37.783333, -12 2.416667), // Default location
               target: LatLng(24.8950265, 67.0382493), // Default location
               // target: LatLng(setAlarmViewModel.currentLocationLat,
               //     setAlarmViewModel.currentLocationLat), // Default location

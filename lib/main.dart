@@ -7,8 +7,11 @@ import 'package:wakey/view_models/stopwatch_viewmodel.dart';
 import 'package:wakey/views/home_view.dart';
 import 'package:wakey/views/set_alarm_view.dart';
 import 'package:wakey/views/stopwatch_view.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     MultiProvider(
       providers: [

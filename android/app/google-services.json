@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "128894295889",
+    "project_id": "wakey00",
+    "storage_bucket": "wakey00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128894295889:android:b42cbeda0a509c10cabd70",
+        "android_client_info": {
+          "package_name": "com.example.wakey"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbaQyqm1PAPViGKgAIldZpkrrmojleGfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,17 +1,21 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wakey/utils/text_style.dart';
 import 'package:wakey/view_models/home_viewmodel.dart';
 import 'package:wakey/view_models/set_alarm_viewmodel.dart';
 import 'package:wakey/view_models/stopwatch_viewmodel.dart';
 import 'package:wakey/views/home_view.dart';
 import 'package:wakey/views/set_alarm_view.dart';
 import 'package:wakey/views/stopwatch_view.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
+  
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options:
+  DefaultFirebaseOptions.currentPlatform
+  );
   runApp(
     MultiProvider(
       providers: [

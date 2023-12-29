@@ -5,10 +5,15 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Column(
         children: [
-          Image.asset("images/wakeup.png",height: MediaQuery.sizeOf(context).height*0.5,)
+          Row(
+            children: [
+              // ElevatedButton(onPressed: (){}, child: Icon())
+            ],
+          )
+          // Image.asset("images/wakeup.png")
         ],
       ),
     );

@@ -10,6 +10,7 @@ class LoginView extends StatelessWidget {
         children: [
           Row(
             children: [
+              Text("data",style: TextStyle(color: Colors.white),)
               // ElevatedButton(onPressed: (){}, child: Icon())
             ],
           )

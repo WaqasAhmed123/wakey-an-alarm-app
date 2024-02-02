@@ -11,11 +11,13 @@ class LoginView extends StatelessWidget {
           Row(
             children: [
               // ElevatedButton(onPressed: (){}, child: Icon())
-              FittedBox(
-                  child: Image.asset(
+              // FittedBox(
+              // child:
+              Image.asset(
                 "assets/images/wakeup.png",
                 fit: BoxFit.fill,
-              ))
+                // )
+              )
             ],
           )
         ],

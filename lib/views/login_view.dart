@@ -5,16 +5,23 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    imageCache.clear();
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          Image.asset(
-            "Add_Screen.jpg",
-            fit: BoxFit.fill,
-            // )
-          )
-        ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Image(image: AssetImage("wakeup.png"))
+            Image.asset(
+              // "images/wakeup.png",
+              // "assets/wakeup_pic.png",
+              "images/wakeup_pic.png",
+              // "Add_Screen.jpg",
+              fit: BoxFit.fill,
+              // )
+            )
+          ],
+        ),
       ),
     );
   }

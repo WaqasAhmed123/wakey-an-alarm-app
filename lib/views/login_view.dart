@@ -11,15 +11,13 @@ class LoginView extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // Image(image: AssetImage("wakeup.png"))
             Image.asset(
-              // "images/wakeup.png",
-              // "assets/wakeup_pic.png",
-              "images/wakeup_pic.png",
-              // "Add_Screen.jpg",
+              "assets/images/wakeup_pic.png",
+              height: MediaQuery.sizeOf(context).height * 0.4,
               fit: BoxFit.fill,
               // )
-            )
+            ),
+            const Text("data")
           ],
         ),
       ),

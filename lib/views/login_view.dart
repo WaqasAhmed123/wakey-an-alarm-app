@@ -6,19 +6,13 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         children: [
-          Row(
-            children: [
-              // ElevatedButton(onPressed: (){}, child: Icon())
-              // FittedBox(
-              // child:
-              Image.asset(
-                "assets/images/wakeup.png",
-                fit: BoxFit.fill,
-                // )
-              )
-            ],
+          Image.asset(
+            "Add_Screen.jpg",
+            fit: BoxFit.fill,
+            // )
           )
         ],
       ),

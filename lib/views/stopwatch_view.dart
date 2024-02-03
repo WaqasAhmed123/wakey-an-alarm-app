@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wakey/view_models/stopwatch_viewmodel.dart';
@@ -13,7 +14,7 @@ class StopWatchView extends StatefulWidget {
 class _StopWatchViewState extends State<StopWatchView> {
   @override
   Widget build(BuildContext context) {
-    // final player = AudioPlayer();
+    final player = AudioPlayer();
     // player.setSource(AssetSource('audio/timer.mp3'));
 
     StopWatchViewModel viewModel =
@@ -42,7 +43,7 @@ class _StopWatchViewState extends State<StopWatchView> {
                     onTap: () async {
                       viewModel.startStopwatch();
                       // viewModel.audioPlayer.
-                      // await player.play(AssetSource('audio/timer.mp3'));
+                      await player.play(AssetSource('audios/timer_sound.mp3'));
                       // await player.play(AssetSource('audio/timer.mp3'));
                       // await player.play(UrlSource("https://pixabay.com/sound-effects/clock-ticking-60-second-countdown-118231/"));
                     },

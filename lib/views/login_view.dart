@@ -12,7 +12,7 @@ class LoginView extends StatelessWidget {
         child: Column(
           children: [
             Image.asset(
-              "assets/images/wakeup_pic.png",
+              "images/wakeup_pic.png",
               height: MediaQuery.sizeOf(context).height * 0.4,
               fit: BoxFit.fill,
               // )

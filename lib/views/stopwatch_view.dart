@@ -48,7 +48,7 @@ class _StopWatchViewState extends State<StopWatchView> {
                       ));
                       player.onPlayerComplete.listen((event) {
                         player.play(
-                          AssetSource('audio/background.mp3'),
+                          AssetSource('audios/timer_sound.mp3'),
                         );
                       });
                       // await player.play(AssetSource('audio/timer.mp3'));
@@ -61,7 +61,7 @@ class _StopWatchViewState extends State<StopWatchView> {
                 stopwatchButton(
                     onTap: () {
                       viewModel.stopStopwatch();
-                      // player.pause();
+                      player.pause();
                     },
                     textColor: const Color(0xFFFFFFFF),
                     context: context,
@@ -70,7 +70,7 @@ class _StopWatchViewState extends State<StopWatchView> {
                 stopwatchButton(
                     onTap: () {
                       viewModel.cancelStopwatch();
-                      // player.stop();
+                      player.stop();
                     },
                     textColor: const Color(0xFFFFFFFF),
                     context: context,

@@ -43,7 +43,14 @@ class _StopWatchViewState extends State<StopWatchView> {
                     onTap: () async {
                       viewModel.startStopwatch();
                       // viewModel.audioPlayer.
-                      await player.play(AssetSource('audios/timer_sound.mp3'));
+                      await player.play(AssetSource(
+                        'audios/timer_sound.mp3',
+                      ));
+                      player.onPlayerComplete.listen((event) {
+                        player.play(
+                          AssetSource('audio/background.mp3'),
+                        );
+                      });
                       // await player.play(AssetSource('audio/timer.mp3'));
                       // await player.play(UrlSource("https://pixabay.com/sound-effects/clock-ticking-60-second-countdown-118231/"));
                     },

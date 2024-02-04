@@ -1,12 +1,14 @@
 import 'dart:async';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class StopWatchViewModel extends ChangeNotifier {
   final Stopwatch stopwatch = Stopwatch();
   late Timer _timer;
+  final player = AudioPlayer();
+
   bool isRunning = false;
-  bool isPaused = false;
 
   StopWatchViewModel() {
     _timer = Timer.periodic(const Duration(milliseconds: 100), _updateTime);
@@ -20,6 +22,8 @@ class StopWatchViewModel extends ChangeNotifier {
 
   void cancelStopwatch() {
     stopwatch.stop();
+    player.stop();
+
     stopwatch.reset();
     if (_timer.isActive) {
       _timer.cancel(); // Cancel the timer if it's active
@@ -28,23 +32,37 @@ class StopWatchViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void startStopwatch() {
+  void startStopwatch() async {
     stopwatch.start();
     isRunning = true;
     if (!_timer.isActive) {
       _timer = Timer.periodic(const Duration(milliseconds: 100), _updateTime);
     }
+    await playAudio();
+    // await player.play(AssetSource(
+    //   'audios/timer_sound.mp3',
+    // ));
+    // player.onPlayerComplete.listen((event) {
+    //   player.play(
+    //     AssetSource('audios/timer_sound.mp3'),
+    //   );
+    // });
     notifyListeners();
   }
 
-  void pauseStopwatch() {
-    print("before $isPaused");
-    isPaused = !isPaused;
-    print("after $isPaused");
+  void pauseStopwatch() async {
+    print("before $isRunning");
+    isRunning = !isRunning;
+    print("after $isRunning");
 
-    if (!isPaused) {
+    if (!isRunning) {
+      stopwatch.stop();
+      player.pause();
+    } else {
       stopwatch.start();
+      await playAudio();
     }
+
     notifyListeners();
   }
 
@@ -55,6 +73,17 @@ class StopWatchViewModel extends ChangeNotifier {
     String milliseconds =
         twoDigits(stopwatch.elapsed.inMilliseconds.remainder(1000) ~/ 10);
     return '$minutes:$seconds:$milliseconds';
+  }
+
+  playAudio() async {
+    await player.play(AssetSource(
+      'audios/timer_sound.mp3',
+    ));
+    player.onPlayerComplete.listen((event) {
+      player.play(
+        AssetSource('audios/timer_sound.mp3'),
+      );
+    });
   }
 
   @override

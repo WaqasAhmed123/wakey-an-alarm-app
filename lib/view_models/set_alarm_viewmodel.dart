@@ -50,50 +50,50 @@ class SetAlarmViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  _requestLocationPermission() async {
-    LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-    }
+  // _requestLocationPermission() async {
+  //   LocationPermission permission = await Geolocator.checkPermission();
+  //   if (permission == LocationPermission.denied) {
+  //     permission = await Geolocator.requestPermission();
+  //   }
 
-    if (permission == LocationPermission.deniedForever) {
-      return false;
-    }
+  //   if (permission == LocationPermission.deniedForever) {
+  //     return false;
+  //   }
 
-    return permission == LocationPermission.always ||
-        permission == LocationPermission.whileInUse;
-  }
-
-  // getCurrentLocation() {
-  //   return {"latitude": currentLocationLat, "longitude": currentLocationLng};
-  //   notifyListeners();
+  //   return permission == LocationPermission.always ||
+  //       permission == LocationPermission.whileInUse;
   // }
 
-  late double currentLocationLat;
-  late double currentLocationLng;
+  // // getCurrentLocation() {
+  // //   return {"latitude": currentLocationLat, "longitude": currentLocationLng};
+  // //   notifyListeners();
+  // // }
 
-  getCurrentLocation() async {
-    bool locationGranted = await _requestLocationPermission();
+  // late double currentLocationLat;
+  // late double currentLocationLng;
 
-    if (locationGranted) {
-      try {
-        Position position = await Geolocator.getCurrentPosition(
-            desiredAccuracy: LocationAccuracy.high);
-        currentLocationLat = position.latitude;
-        currentLocationLng = position.longitude;
-        notifyListeners();
-        // currentLocation = LatLng(
-        //   position.latitude,
-        //   position.longitude,
-        // );
+  // getCurrentLocation() async {
+  //   bool locationGranted = await _requestLocationPermission();
 
-        // mapController?.animateCamera(CameraUpdate.newLatLng(currentLocation));
-        // UserModel.currentLocation = currentLocation;
-        debugPrint("$position");
-        return ("The position is $position");
-      } catch (e) {
-        debugPrint("The error is $e");
-      }
-    }
-  }
+  //   if (locationGranted) {
+  //     try {
+  //       Position position = await Geolocator.getCurrentPosition(
+  //           desiredAccuracy: LocationAccuracy.high);
+  //       currentLocationLat = position.latitude;
+  //       currentLocationLng = position.longitude;
+  //       notifyListeners();
+  //       // currentLocation = LatLng(
+  //       //   position.latitude,
+  //       //   position.longitude,
+  //       // );
+
+  //       // mapController?.animateCamera(CameraUpdate.newLatLng(currentLocation));
+  //       // UserModel.currentLocation = currentLocation;
+  //       debugPrint("$position");
+  //       return ("The position is $position");
+  //     } catch (e) {
+  //       debugPrint("The error is $e");
+  //     }
+  //   }
+  // }
 }

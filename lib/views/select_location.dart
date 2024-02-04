@@ -3,34 +3,35 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:wakey/view_models/select_location_viewmodel.dart';
 import 'package:wakey/view_models/set_alarm_viewmodel.dart';
 
-class LocationSelect extends StatefulWidget {
-  const LocationSelect({super.key});
+class SelectLocationView extends StatefulWidget {
+  const SelectLocationView({super.key});
 
   @override
-  State<LocationSelect> createState() => _LocationSelectState();
+  State<SelectLocationView> createState() => _SelectLocationViewState();
 }
 
-class _LocationSelectState extends State<LocationSelect> {
+class _SelectLocationViewState extends State<SelectLocationView> {
   @override
   Widget build(BuildContext context) {
     final Completer<GoogleMapController> controllerCompleter = Completer();
-    LatLng selectedLocation;
 
-    final setAlarmViewModel =
-        Provider.of<SetAlarmViewModel>(context, listen: false);
+    final selectLocationViewModel =
+        Provider.of<SelectLocationViewModel>(context, listen: false);
     return Stack(children: [
-      Consumer<SetAlarmViewModel>(builder: (context, value, child) {
+      Consumer<SelectLocationViewModel>(builder: (context, value, child) {
         return GoogleMap(
-          
             onMapCreated: (GoogleMapController controller) {
               controllerCompleter.complete(controller);
             },
             onCameraMove: (CameraPosition position) {
               // Update the selected location based on the camera position
-              selectedLocation = position.target;
+             selectLocationViewModel.selectedLocation = position.target;
             },
+            myLocationButtonEnabled: true,
+            myLocationEnabled: true,
             initialCameraPosition: const CameraPosition(
               // target: LatLng(37.783333, -12 2.416667), // Default location
               target: LatLng(24.8950265, 67.0382493), // Default location
@@ -55,7 +56,7 @@ class _LocationSelectState extends State<LocationSelect> {
     ]);
   }
 }
-// locationSelectWidget({context}) {
+// SelectLocationViewWidget({context}) {
 //   final Completer<GoogleMapController> controllerCompleter = Completer();
 //   final setAlarmViewModel =
 //       Provider.of<SetAlarmViewModel>(context, listen: false);

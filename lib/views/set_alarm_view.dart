@@ -114,8 +114,11 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                   borderRadius: BorderRadius.circular(10.0),
                   splashColor: Colors.transparent,
                   onTap: () async {
-                    await setAlarmViewModel.getCurrentLocation();
-                    Navigator.push(context,MaterialPageRoute(builder: (context) => const LocationSelect())) ;
+                    // await setAlarmViewModel.getCurrentLocation();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SelectLocationView()));
                   },
                   child: ListTile(
                     leading: Text(

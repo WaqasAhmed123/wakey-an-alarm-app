@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:wakey/view_models/select_location_viewmodel.dart';
 import 'package:wakey/views/login_view.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,8 @@ import 'package:wakey/view_models/stopwatch_viewmodel.dart';
 import 'package:wakey/views/home_view.dart';
 import 'package:wakey/views/set_alarm_view.dart';
 import 'package:wakey/views/stopwatch_view.dart';
+
+import 'views/select_location.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,6 +35,9 @@ void main() async {
         ChangeNotifierProvider<SetAlarmViewModel>(
             create: (context) => SetAlarmViewModel()),
         Provider(create: (context) => const SetAlarmView()),
+        ChangeNotifierProvider<SelectLocationViewModel>(
+            create: (context) => SelectLocationViewModel()),
+        Provider(create: (context) => const SelectLocationView()),
       ],
       child: const MyApp(),
     ),
@@ -54,7 +60,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFF0F757)),
         useMaterial3: true,
       ),
-      home: const HomeView(),
+      // home: const HomeView(),
+      home: const SelectLocationView(),
       // home: const LoginView(),
     );
   }

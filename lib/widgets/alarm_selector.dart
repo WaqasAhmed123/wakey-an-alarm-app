@@ -19,7 +19,7 @@ alarmTimeSelctor({context, childCount, columnOfScroller}) {
                 : setAlarmViewModel.setSelectedAmOrPm(
                     selectedAmOrPm: index == 0 ? "AM" : "PM");
 
-        print(setAlarmViewModel.getSelectedHour);
+        debugPrint("${setAlarmViewModel.getSelectedHour}");
       },
       childDelegate: ListWheelChildBuilderDelegate(
           childCount: childCount,

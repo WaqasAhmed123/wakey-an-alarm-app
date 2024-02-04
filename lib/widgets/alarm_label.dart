@@ -64,7 +64,7 @@ alarmLabelWidget({context}) {
                             color: Colors.black, fontWeight: FontWeight.bold)),
                     onPressed: () {
                       // Perform the desired action with selectedDays
-                      // print('Selected Days: ${setAlarmViewModel.selectedDays}');
+                      // debugPrint('Selected Days: ${setAlarmViewModel.selectedDays}');
                       Navigator.of(context).pop();
                     },
                   ),

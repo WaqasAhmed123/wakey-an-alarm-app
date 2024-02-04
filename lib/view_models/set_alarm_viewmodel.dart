@@ -89,10 +89,10 @@ class SetAlarmViewModel extends ChangeNotifier {
 
         // mapController?.animateCamera(CameraUpdate.newLatLng(currentLocation));
         // UserModel.currentLocation = currentLocation;
-        print(position);
+        debugPrint("$position");
         return ("The position is $position");
       } catch (e) {
-        print("The error is $e");
+        debugPrint("The error is $e");
       }
     }
   }

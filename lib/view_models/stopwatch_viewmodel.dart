@@ -51,9 +51,9 @@ class StopWatchViewModel extends ChangeNotifier {
   }
 
   void pauseStopwatch() async {
-    print("before $isRunning");
+    debugPrint("before $isRunning");
     isRunning = !isRunning;
-    print("after $isRunning");
+    debugPrint("after $isRunning");
 
     if (!isRunning) {
       stopwatch.stop();

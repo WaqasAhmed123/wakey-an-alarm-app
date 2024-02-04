@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class UserModel {
+  // LatLng? currentLocation;
+  Map<String, double> currentLocation = {};
+  // late double currentLocationLat;
+  // late double currentLocationLng;
+
   _requestLocationPermission() async {
     LocationPermission permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
@@ -21,9 +27,6 @@ class UserModel {
   //   notifyListeners();
   // }
 
-  late double currentLocationLat;
-  late double currentLocationLng;
-
   getCurrentLocation() async {
     bool locationGranted = await _requestLocationPermission();
 
@@ -31,8 +34,8 @@ class UserModel {
       try {
         Position position = await Geolocator.getCurrentPosition(
             desiredAccuracy: LocationAccuracy.high);
-        currentLocationLat = position.latitude;
-        currentLocationLng = position.longitude;
+        currentLocation["latitude"] = position.latitude;
+        currentLocation["longitude"] = position.longitude;
         // notifyListeners();
         // currentLocation = LatLng(
         //   position.latitude,

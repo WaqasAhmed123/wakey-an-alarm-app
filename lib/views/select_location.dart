@@ -66,7 +66,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-// import 'package:geocoding/geocoding.dart'; // Add this import for geocoding
+import 'package:geocoding/geocoding.dart'; // Add this import for geocoding
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:wakey/services/location_service.dart';
@@ -82,7 +82,7 @@ class SelectLocationView extends StatefulWidget {
 }
 
 class _SelectLocationViewState extends State<SelectLocationView> {
-  final Set<Marker> _markers = {}; // Set to store markers on the map
+  // final Set<Marker> _markers = {}; // Set to store markers on the map
 
   @override
   Widget build(BuildContext context) {
@@ -101,18 +101,18 @@ class _SelectLocationViewState extends State<SelectLocationView> {
             onLongPress: (LatLng point) async {
               // Handle the long-press event here
               print('Long Pressed: $point');
-
+              selectLocationViewModel.addTempMarker(point: point);
               // Add a red temporary marker
-              _markers.clear(); // Clear existing markers
-              _markers.add(
-                Marker(
-                  markerId: const MarkerId('selected_location'),
-                  position: point,
-                  icon: BitmapDescriptor.defaultMarkerWithHue(
-                    BitmapDescriptor.hueRed,
-                  ),
-                ),
-              );
+              // _markers.clear(); // Clear existing markers
+              // _markers.add(
+              //   Marker(
+              //     markerId: const MarkerId('selected_location'),
+              //     position: point,
+              //     icon: BitmapDescriptor.defaultMarkerWithHue(
+              //       BitmapDescriptor.hueRed,
+              //     ),
+              //   ),
+              // );
 
               // Reverse geocode to get the address information
               List<Placemark> placemarks = await placemarkFromCoordinates(
@@ -148,7 +148,7 @@ class _SelectLocationViewState extends State<SelectLocationView> {
               );
 
               // Update your ViewModel or perform any other necessary actions
-              selectLocationViewModel.updateLocation(point);
+              // selectLocationViewModel.updateLocation(point);
             },
             myLocationButtonEnabled: true,
             myLocationEnabled: true,
@@ -157,7 +157,7 @@ class _SelectLocationViewState extends State<SelectLocationView> {
                   const LatLng(0.0, 0.0),
               zoom: 15.0,
             ),
-            markers: _markers,
+            markers: selectLocationViewModel.markers,
           ),
         ],
       ),

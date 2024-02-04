@@ -6,6 +6,7 @@ class StopWatchViewModel extends ChangeNotifier {
   final Stopwatch stopwatch = Stopwatch();
   late Timer _timer;
   bool isRunning = false;
+  bool isPaused = false;
 
   StopWatchViewModel() {
     _timer = Timer.periodic(const Duration(milliseconds: 100), _updateTime);
@@ -36,13 +37,13 @@ class StopWatchViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void stopStopwatch() {
-    print("before $isRunning");
-    !isRunning;
-    print("after $isRunning");
+  void pauseStopwatch() {
+    print("before $isPaused");
+    isPaused = !isPaused;
+    print("after $isPaused");
 
-    if (!isRunning) {
-      stopwatch.stop();
+    if (!isPaused) {
+      stopwatch.start();
     }
     notifyListeners();
   }

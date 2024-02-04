@@ -60,7 +60,7 @@ class _StopWatchViewState extends State<StopWatchView> {
                     buttonColor: Theme.of(context).primaryColor),
                 stopwatchButton(
                     onTap: () {
-                      viewModel.stopStopwatch();
+                      viewModel.pauseStopwatch();
                       player.pause();
                     },
                     textColor: const Color(0xFFFFFFFF),

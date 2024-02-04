@@ -11,7 +11,6 @@ alarmTimeSelctor({context, childCount, columnOfScroller}) {
       physics: const FixedExtentScrollPhysics(),
       itemExtent: 40,
       onSelectedItemChanged: (index) {
-        // setAlarmViewModel.setSelectedHour(selectedHour: index + 1);
         columnOfScroller == 1
             ? setAlarmViewModel.setSelectedHour(selectedHour: index + 1)
             : columnOfScroller == 2

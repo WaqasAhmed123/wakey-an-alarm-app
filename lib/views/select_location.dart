@@ -1,10 +1,13 @@
+// ignore_for_file: must_call_super
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:wakey/view_models/select_location_viewmodel.dart';
-import 'package:wakey/view_models/set_alarm_viewmodel.dart';
+
+import '../models/user_model.dart';
 
 class SelectLocationView extends StatefulWidget {
   const SelectLocationView({super.key});
@@ -14,6 +17,12 @@ class SelectLocationView extends StatefulWidget {
 }
 
 class _SelectLocationViewState extends State<SelectLocationView> {
+  @override
+
+  initState() async{
+    await UserModel.getCurrentLocation();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Completer<GoogleMapController> controllerCompleter = Completer();
@@ -28,13 +37,14 @@ class _SelectLocationViewState extends State<SelectLocationView> {
             },
             onCameraMove: (CameraPosition position) {
               // Update the selected location based on the camera position
-             selectLocationViewModel.selectedLocation = position.target;
+              selectLocationViewModel.selectedLocation = position.target;
             },
             myLocationButtonEnabled: true,
             myLocationEnabled: true,
-            initialCameraPosition: const CameraPosition(
+            initialCameraPosition:  CameraPosition(
               // target: LatLng(37.783333, -12 2.416667), // Default location
-              target: LatLng(24.8950265, 67.0382493), // Default location
+              // target: LatLng(24.8950265, 67.0382493), // Default location
+              target: selectLocationViewModel.currentLocation, // Default location
               // target: LatLng(setAlarmViewModel.currentLocationLat,
               //     setAlarmViewModel.currentLocationLat), // Default location
               zoom: 12.0,

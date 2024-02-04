@@ -63,16 +63,11 @@
 //   }
 // }
 
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart'; // Add this import for geocoding
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:wakey/services/location_service.dart';
 import 'package:wakey/view_models/select_location_viewmodel.dart';
-
-import '../models/user_model.dart';
 
 class SelectLocationView extends StatefulWidget {
   const SelectLocationView({Key? key}) : super(key: key);
@@ -94,9 +89,9 @@ class _SelectLocationViewState extends State<SelectLocationView> {
         centerTitle: true,
         title: const Text('Select Location'),
       ),
-      body: Stack(
-        children: [
-          GoogleMap(
+      body: Stack(children: [
+        Consumer<SelectLocationViewModel>(builder: (context, value, child) {
+          return GoogleMap(
             onMapCreated: (GoogleMapController controller) {},
             onLongPress: (LatLng point) async {
               // Handle the long-press event here
@@ -124,28 +119,30 @@ class _SelectLocationViewState extends State<SelectLocationView> {
                 context: context,
                 builder: (BuildContext context) {
                   return Container(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Text(
-                          'Selected Location',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18.0,
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text(
+                            'Selected Location',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.0,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 8.0),
-                        Text('Address: ${place.name}'),
-                        Text('City: ${place.locality}'),
-                        Text('State: ${place.administrativeArea}'),
-                        Text('Country: ${place.country}'),
-                      ],
-                    ),
-                  );
+                          const SizedBox(height: 8.0),
+                          Text('Address: ${place.name}'),
+                          Text('City: ${place.locality}'),
+                          Text('State: ${place.administrativeArea}'),
+                          Text('Country: ${place.country}'),
+                        ],
+                      ));
                 },
-              );
+              ).whenComplete(() {
+                // Handle when the bottom sheet is closed
+                selectLocationViewModel.removeTempMarker();
+              });
 
               // Update your ViewModel or perform any other necessary actions
               // selectLocationViewModel.updateLocation(point);
@@ -158,9 +155,9 @@ class _SelectLocationViewState extends State<SelectLocationView> {
               zoom: 15.0,
             ),
             markers: selectLocationViewModel.markers,
-          ),
-        ],
-      ),
+          );
+        })
+      ]),
     );
   }
 }

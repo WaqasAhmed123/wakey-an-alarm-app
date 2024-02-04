@@ -23,4 +23,9 @@ class SelectLocationViewModel extends ChangeNotifier {
     );
     notifyListeners();
   }
+
+void removeTempMarker() {
+    markers.clear(); // Clear existing markers
+    notifyListeners();
+  }
 }

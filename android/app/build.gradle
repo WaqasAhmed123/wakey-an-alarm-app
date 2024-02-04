@@ -71,6 +71,11 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.baseflow.geocoding.android:geocoding-android:2.0.0'
+    // implementation 'com.baseflow.geocoding.android:geocoding-android:latest_version'
+
 
 }
+// repositories {
+//     mavenCentral()
+//     google()
+// }

@@ -13,8 +13,6 @@ class SelectLocationView extends StatefulWidget {
 }
 
 class _SelectLocationViewState extends State<SelectLocationView> {
-  // final Set<Marker> _markers = {}; // Set to store markers on the map
-
   @override
   Widget build(BuildContext context) {
     final selectLocationViewModel =
@@ -31,22 +29,8 @@ class _SelectLocationViewState extends State<SelectLocationView> {
           return GoogleMap(
             onMapCreated: (GoogleMapController controller) {},
             onLongPress: (LatLng point) async {
-              // Handle the long-press event here
               print('Long Pressed: $point');
               selectLocationViewModel.addTempMarker(point: point);
-              // Add a red temporary marker
-              // _markers.clear(); // Clear existing markers
-              // _markers.add(
-              //   Marker(
-              //     markerId: const MarkerId('selected_location'),
-              //     position: point,
-              //     icon: BitmapDescriptor.defaultMarkerWithHue(
-              //       BitmapDescriptor.hueRed,
-              //     ),
-              //   ),
-              // );
-
-              // Reverse geocode to get the address information
               List<Placemark> placemarks = await placemarkFromCoordinates(
                   point.latitude, point.longitude);
               Placemark place = placemarks[0];

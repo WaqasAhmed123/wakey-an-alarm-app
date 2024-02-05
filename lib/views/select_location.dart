@@ -57,22 +57,20 @@ class _SelectLocationViewState extends State<SelectLocationView> {
                 context: context,
                 builder: (BuildContext context) {
                   return Container(
+                      color: Theme.of(context).scaffoldBackgroundColor,
                       width: MediaQuery.sizeOf(context).width * 1,
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Text(
-                            'Selected Location',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18.0,
-                            ),
-                          ),
+                          Text('Selected Location',
+                              style: textStyle(
+                                  textColor: Colors.yellow)["titleMedium"]),
                           const SizedBox(height: 8.0),
                           Text(
-                              'Address: ${place.name}, ${place.locality} ${place.country} '),
+                              'Address: ${place.name}, ${place.locality} ${place.country} ',
+                              style: textStyle()["titleSmall"]),
                           // Text(
                           //     'City: ${place.locality}, Country: ${place.country}'),
                           // Text('State: ${place.administrativeArea}'),

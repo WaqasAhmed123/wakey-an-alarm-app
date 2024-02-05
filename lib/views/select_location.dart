@@ -140,12 +140,9 @@ class _SelectLocationViewState extends State<SelectLocationView> {
                       ));
                 },
               ).whenComplete(() {
-                // Handle when the bottom sheet is closed
                 selectLocationViewModel.removeTempMarker();
               });
 
-              // Update your ViewModel or perform any other necessary actions
-              // selectLocationViewModel.updateLocation(point);
             },
             myLocationButtonEnabled: true,
             myLocationEnabled: true,

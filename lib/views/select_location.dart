@@ -22,7 +22,8 @@ class _SelectLocationViewState extends State<SelectLocationView> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         centerTitle: true,
-        title: Text('Select Location', style: textStyle()["titleMedium"]),
+        title: Text('Long Press to Select a Location',
+            style: textStyle()["titleMedium"]),
       ),
       body: Stack(children: [
         Consumer<SelectLocationViewModel>(builder: (context, value, child) {

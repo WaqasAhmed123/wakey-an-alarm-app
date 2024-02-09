@@ -56,6 +56,9 @@ class _SelectLocationViewState extends State<SelectLocationView> {
                           Text(
                               'Address: ${place.name}, ${place.locality} ${place.country} ',
                               style: textStyle()["titleSmall"]),
+                          ElevatedButton(
+                              onPressed: () {}, child: const Text("Select"))
+
                           // Text(
                           //     'City: ${place.locality}, Country: ${place.country}'),
                           // Text('State: ${place.administrativeArea}'),

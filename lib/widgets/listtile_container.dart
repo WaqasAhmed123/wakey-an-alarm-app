@@ -29,7 +29,8 @@ listtileContainer(
         trailing: isToggleButton
             ? Consumer<SetAlarmViewModel>(builder: (context, value, child) {
                 return Switch(
-                    activeColor: const Color(0xFFFFFFFF),
+                    // activeColor: const Color(0xFFFFFFFF),
+                    activeColor: Colors.blueGrey.shade600,
                     activeTrackColor: const Color(0xFFF0F757),
                     inactiveThumbColor: Colors.blueGrey.shade600,
                     inactiveTrackColor: Colors.grey.shade400,

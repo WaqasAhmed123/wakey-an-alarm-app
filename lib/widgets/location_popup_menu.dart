@@ -21,23 +21,43 @@ void showPopupMenu({context, position}) async {
       position.dy + 1,
     ),
     items: <PopupMenuEntry>[
-      const PopupMenuItem(
-        // value: 1,
-        child: Text('Current Location'),
+      PopupMenuItem(
+        // value: 2,
+        child: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          // child: Container(
+          // padding: const EdgeInsets.all(8.0), // Adjust padding as needed
+          child: const Row(
+            children: [
+              Text('Current Location'),
+            ],
+          ),
+        ),
       ),
       PopupMenuItem(
-        value: 2,
+        // value: 2,
         child: InkWell(
-            onTap: () async {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const SelectLocationView()),
-              );
-              Navigator.pop(context);
-            },
-            child: const Text('Choose on Map')),
+          onTap: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SelectLocationView(),
+              ),
+            );
+            Navigator.pop(context);
+          },
+          // child: Container(
+          // padding: const EdgeInsets.all(8.0), // Adjust padding as needed
+          child: const Row(
+            children: [
+              Text('Choose on Map'),
+            ],
+          ),
+        ),
       ),
+      // ),
       // Add more PopupMenuItems as needed
     ],
     // elevation: 8.0, // You can adjust the elevation of the menu

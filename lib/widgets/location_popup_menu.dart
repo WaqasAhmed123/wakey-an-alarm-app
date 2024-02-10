@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wakey/services/location_service.dart';
 import 'package:wakey/views/select_location.dart';
 
 void showPopupMenu({context, position}) async {
@@ -24,7 +25,8 @@ void showPopupMenu({context, position}) async {
       PopupMenuItem(
         // value: 2,
         child: InkWell(
-          onTap: () {
+          onTap: () async {
+            await LocationService.fetchCurrentLocation();
             Navigator.pop(context);
           },
           // child: Container(

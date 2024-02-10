@@ -8,6 +8,7 @@ import 'package:wakey/widgets/alarm_selector.dart';
 
 import '../view_models/set_alarm_viewmodel.dart';
 import '../widgets/listtile_container.dart';
+import '../widgets/location_popup_menu.dart';
 
 class SetAlarmView extends StatefulWidget {
   const SetAlarmView({Key? key}) : super(key: key);
@@ -112,12 +113,14 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                 InkWell(
                   borderRadius: BorderRadius.circular(10.0),
                   splashColor: Colors.transparent,
-                  onTap: () async {
-                    // await setAlarmViewModel.getCurrentLocation();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SelectLocationView()));
+                  onTapDown: (TapDownDetails details) {
+                    Offset tapPosition = details.globalPosition;
+                    final RenderBox inkWellBox =
+                        context.findRenderObject() as RenderBox;
+                    tapPosition = inkWellBox.globalToLocal(tapPosition);
+                    debugPrint("$tapPosition");
+                    showPopupMenu(context: context, position: tapPosition);
+                    // Now you can use tapPosition for showing the popup menu
                   },
                   child: ListTile(
                     leading: Text(

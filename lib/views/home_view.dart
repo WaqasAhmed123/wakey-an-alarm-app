@@ -16,9 +16,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    
     return Consumer<HomeViewModel>(builder: (context, homeViewModel, child) {
-      
       return SafeArea(
         child: Scaffold(
             floatingActionButtonLocation:

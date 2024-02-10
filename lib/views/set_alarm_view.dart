@@ -8,7 +8,6 @@ import 'package:wakey/widgets/alarm_selector.dart';
 
 import '../view_models/set_alarm_viewmodel.dart';
 import '../widgets/listtile_container.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class SetAlarmView extends StatefulWidget {
   const SetAlarmView({Key? key}) : super(key: key);

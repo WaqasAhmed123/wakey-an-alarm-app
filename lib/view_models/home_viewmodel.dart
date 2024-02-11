@@ -22,7 +22,7 @@ class HomeViewModel extends ChangeNotifier {
   }
 
   bool isAlarmSelected = false;
-  onAlarmSelected() {
+  toggleAlarmSelected() {
     isAlarmSelected = !isAlarmSelected;
     notifyListeners();
   }

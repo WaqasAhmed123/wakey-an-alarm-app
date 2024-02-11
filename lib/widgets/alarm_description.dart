@@ -23,6 +23,7 @@ Widget alarmDescription(
                 alarmReason,
                 style: textStyle()["titleSmall"],
               ),
+              const Spacer(),
               Switch(
                   // activeColor: const Color(0xFFFFFFFF),
                   activeColor: Colors.blueGrey.shade600,

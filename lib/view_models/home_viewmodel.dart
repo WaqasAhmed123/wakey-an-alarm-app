@@ -20,4 +20,10 @@ class HomeViewModel extends ChangeNotifier {
       MaterialPageRoute(builder: (context) => const SetAlarmView()),
     );
   }
+
+  bool isAlarmSelected = false;
+  onAlarmSelected() {
+    isAlarmSelected = !isAlarmSelected;
+    notifyListeners();
+  }
 }

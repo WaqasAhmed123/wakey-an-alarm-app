@@ -8,8 +8,8 @@ Widget alarmDescription(
   final homeViewModel = Provider.of<HomeViewModel>(context, listen: false);
   return Consumer<HomeViewModel>(builder: (context, value, child) {
     return Container(
-      height: 177,
-      width: 169,
+      // height: 177,
+      // width: 169,
       decoration: BoxDecoration(
           color: const Color(0xFF34344A),
           border: Border.all(color: Colors.transparent),

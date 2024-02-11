@@ -5,10 +5,15 @@ import 'package:wakey/view_models/home_viewmodel.dart';
 
 Widget alarmDescription(
     {alarmReason, alarmTime, isDay, required List<bool> alarmDays, context}) {
-  final homeViewModel = Provider.of<HomeViewModel>(context, listen: false);
+  // final homeViewModel = Provider.of<HomeViewModel>(context, listen: false);
   return Consumer<HomeViewModel>(builder: (context, value, child) {
     return InkWell(
-      onLongPress: () => homeViewModel.toggleAlarmSelected(),
+      splashColor: Colors.transparent,
+      //  border: Border.all(color: Colors.transparent),
+      borderRadius: BorderRadius.circular(20),
+
+      onLongPress: () => value.toggleAlarmSelected(),
+      // onLongPress: () => homeViewModel.toggleAlarmSelected(),
       child: Container(
         // height: 177,
         // width: 169,
@@ -34,16 +39,24 @@ Widget alarmDescription(
                 //             homeViewModel.toggleAlarmSelected(),
                 //       )
                 //     :
-                Switch(
-                    // activeColor: const Color(0xFFFFFFFF),
-                    activeColor: Colors.blueGrey.shade600,
-                    activeTrackColor: const Color(0xFFF0F757),
-                    inactiveThumbColor: Colors.blueGrey.shade600,
-                    inactiveTrackColor: Colors.grey.shade400,
-                    splashRadius: 50.0,
-                    value: homeViewModel.toggleAlarm,
-                    // changes the state of the switch
-                    onChanged: (value) => homeViewModel.onToggle()),
+                // value.isAlarmSelected
+                //     ?
+                Checkbox(
+                  value: value.isAlarmSelected,
+                  onChanged: (newValue) => value.toggleAlarmSelected(),
+                )
+                // : Switch(
+                //     // activeColor: const Color(0xFFFFFFFF),
+                //     activeColor: Colors.blueGrey.shade600,
+                //     activeTrackColor: const Color(0xFFF0F757),
+                //     inactiveThumbColor: Colors.blueGrey.shade600,
+                //     inactiveTrackColor: Colors.grey.shade400,
+                //     splashRadius: 50.0,
+                //     // value: homeViewModel.toggleAlarm,
+                //     value: value.toggleAlarm,
+                //     // changes the state of the switch
+                //     onChanged: (valueObtained) => value.onToggle()),
+                // onChanged: (value) => homeViewModel.onToggle()),
               ],
             ),
             Row(

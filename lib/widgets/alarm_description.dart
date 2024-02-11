@@ -17,26 +17,44 @@ Widget alarmDescription(
       child: Padding(
         padding: const EdgeInsets.only(left: 20, top: 10),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(
-            alarmReason,
-            style: textStyle()["titleSmall"],
+          Row(
+            children: [
+              Text(
+                alarmReason,
+                style: textStyle()["titleSmall"],
+              ),
+              Switch(
+                  // activeColor: const Color(0xFFFFFFFF),
+                  activeColor: Colors.blueGrey.shade600,
+                  activeTrackColor: const Color(0xFFF0F757),
+                  inactiveThumbColor: Colors.blueGrey.shade600,
+                  inactiveTrackColor: Colors.grey.shade400,
+                  splashRadius: 50.0,
+                  value: homeViewModel.toggleAlarm,
+                  // changes the state of the switch
+                  onChanged: (value) => homeViewModel.onToggle()),
+            ],
           ),
-          RichText(
-            text: TextSpan(
-              style: DefaultTextStyle.of(context).style,
-              children: <TextSpan>[
-                TextSpan(
-                  text: alarmTime,
-                  style: textStyle()["titleLarge"]!
-                      .copyWith(decoration: TextDecoration.none),
+          Row(
+            children: [
+              RichText(
+                text: TextSpan(
+                  style: DefaultTextStyle.of(context).style,
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: alarmTime,
+                      style: textStyle()["titleLarge"]!
+                          .copyWith(decoration: TextDecoration.none),
+                    ),
+                    TextSpan(
+                      text: isDay ? "AM" : "PM",
+                      style: textStyle()["titleMedium"]!
+                          .copyWith(decoration: TextDecoration.none),
+                    ),
+                  ],
                 ),
-                TextSpan(
-                  text: isDay ? "AM" : "PM",
-                  style: textStyle()["titleMedium"]!
-                      .copyWith(decoration: TextDecoration.none),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
           Row(
               children: List.generate(7, (index) {
@@ -63,16 +81,16 @@ Widget alarmDescription(
                   ],
                 ));
           })),
-          Switch(
-              // activeColor: const Color(0xFFFFFFFF),
-              activeColor: Colors.blueGrey.shade600,
-              activeTrackColor: const Color(0xFFF0F757),
-              inactiveThumbColor: Colors.blueGrey.shade600,
-              inactiveTrackColor: Colors.grey.shade400,
-              splashRadius: 50.0,
-              value: homeViewModel.toggleAlarm,
-              // changes the state of the switch
-              onChanged: (value) => homeViewModel.onToggle()),
+          // Switch(
+          //     // activeColor: const Color(0xFFFFFFFF),
+          //     activeColor: Colors.blueGrey.shade600,
+          //     activeTrackColor: const Color(0xFFF0F757),
+          //     inactiveThumbColor: Colors.blueGrey.shade600,
+          //     inactiveTrackColor: Colors.grey.shade400,
+          //     splashRadius: 50.0,
+          //     value: homeViewModel.toggleAlarm,
+          //     // changes the state of the switch
+          //     onChanged: (value) => homeViewModel.onToggle()),
         ]),
       ),
     );

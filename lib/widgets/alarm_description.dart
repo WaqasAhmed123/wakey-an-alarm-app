@@ -54,33 +54,35 @@ Widget alarmDescription(
                   ],
                 ),
               ),
+              const Spacer(),
+              Row(
+                  children: List.generate(7, (index) {
+                return Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Column(
+                      children: [
+                        Text(
+                          alarmDays[index] ? '●' : '',
+                          style: TextStyle(
+                            color: alarmDays[index]
+                                ? Colors.yellow
+                                : Colors.transparent,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Text(
+                          getDayName(index),
+                          style: TextStyle(
+                            color:
+                                alarmDays[index] ? Colors.yellow : Colors.white,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ));
+              })),
             ],
           ),
-          Row(
-              children: List.generate(7, (index) {
-            return Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Column(
-                  children: [
-                    Text(
-                      alarmDays[index] ? '●' : '',
-                      style: TextStyle(
-                        color: alarmDays[index]
-                            ? Colors.yellow
-                            : Colors.transparent,
-                        fontSize: 16,
-                      ),
-                    ),
-                    Text(
-                      getDayName(index),
-                      style: TextStyle(
-                        color: alarmDays[index] ? Colors.yellow : Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
-                ));
-          })),
           // Switch(
           //     // activeColor: const Color(0xFFFFFFFF),
           //     activeColor: Colors.blueGrey.shade600,

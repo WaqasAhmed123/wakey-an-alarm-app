@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wakey/utils/text_style.dart';
-import 'package:wakey/views/select_location.dart';
 import 'package:wakey/widgets/alarm_days.dart';
 import 'package:wakey/widgets/alarm_label.dart';
 import 'package:wakey/widgets/alarm_selector.dart';

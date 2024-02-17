@@ -9,7 +9,7 @@ listtileContainer(
     onTap,
     isToggleButton = false,
     context,
-    vibrationWidet = false}) {
+    vibrationWidget = false}) {
   final setAlarmViewModel =
       Provider.of<SetAlarmViewModel>(context, listen: false);
 
@@ -35,9 +35,11 @@ listtileContainer(
                     inactiveThumbColor: Colors.blueGrey.shade600,
                     inactiveTrackColor: Colors.grey.shade400,
                     splashRadius: 50.0,
-                    value: vibrationWidet ? value.vibrate : value.deleteAlarm,
+                    value: vibrationWidget
+                        ? value.vibrateWhenRinging
+                        : value.deleteAfterRinging,
                     // changes the state of the switch
-                    onChanged: (value) => vibrationWidet
+                    onChanged: (value) => vibrationWidget
                         ? setAlarmViewModel.setVibration()
                         : setAlarmViewModel.setDeletion());
               })

@@ -123,7 +123,7 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                     tralingText: "",
                     context: context,
                     isToggleButton: true,
-                    vibrationWidet: true),
+                    vibrationWidget: true),
                 InkWell(
                   borderRadius: BorderRadius.circular(10.0),
                   splashColor: Colors.transparent,

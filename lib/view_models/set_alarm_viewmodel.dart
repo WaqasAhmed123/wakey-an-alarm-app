@@ -10,7 +10,7 @@ import '../services/database_service.dart';
 
 class SetAlarmViewModel extends ChangeNotifier {
   TextEditingController alarmLabel = TextEditingController();
-  
+
   // Map<String, dynamic> alarmDetails = {};
   Map<String, bool> alarmDays = {
     'Monday': false,
@@ -27,15 +27,15 @@ class SetAlarmViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool vibrate = false;
+  bool vibrateWhenRinging = false;
   setVibration() {
-    vibrate = !vibrate;
+    vibrateWhenRinging = !vibrateWhenRinging;
     notifyListeners();
   }
 
-  bool deleteAlarm = false;
+  bool deleteAfterRinging = false;
   setDeletion() {
-    deleteAlarm = !deleteAlarm;
+    deleteAfterRinging = !deleteAfterRinging;
     notifyListeners();
   }
 
@@ -57,11 +57,17 @@ class SetAlarmViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  // insertAlarm(){
-  //   // String alarmDaysJson = jsonEncode(alarmDays);
-  //   SelectLocationViewModel  selectLocationViewModel=SelectLocationViewModel();
-  //   LatLng? alarmLocation = selectLocationViewModel.selectedAlarmLocation ?? UserModel.currentLocation;
-  //   AlarmModel alarmModel=AlarmModel(alarmDays: alarmDays,alarmTime: "$getSelectedHour:$getSelectedMin $getSelectedAmOrPm",alarmTitle: alarmLabel.text,alarmLocation: alarmLocation,deleteAfterRinging: delete)
-  //   DataBase.instance.insertAlarm(alarm)
-  // }
+  insertAlarm() {
+    // String alarmDaysJson = jsonEncode(alarmDays);
+    SelectLocationViewModel selectLocationViewModel = SelectLocationViewModel();
+    LatLng? alarmLocation = selectLocationViewModel.selectedAlarmLocation ??
+        UserModel.currentLocation;
+    AlarmModel alarmModel = AlarmModel(
+        alarmDays: alarmDays,
+        alarmTime: "$getSelectedHour:$getSelectedMin $getSelectedAmOrPm",
+        alarmTitle: alarmLabel.text,
+        alarmLocation: alarmLocation,
+        deleteAfterRinging: deleteAfterRinging);
+    DataBase.instance.insertAlarm(alarmModel);
+  }
 }

@@ -3,11 +3,11 @@ import 'package:sqflite/sqflite.dart';
 
 import '../models/alarm_model.dart';
 
-class DatabaseHelper {
-  static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
+class DataBase {
+  static final DataBase instance = DataBase._privateConstructor();
   static Database? _database;
 
-  DatabaseHelper._privateConstructor();
+  DataBase._privateConstructor();
 
   Future<Database> get database async {
     if (_database != null) return _database!;

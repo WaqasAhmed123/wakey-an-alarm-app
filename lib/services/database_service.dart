@@ -27,8 +27,8 @@ class DataBase {
         alarmTitle TEXT,
         alarmTime TEXT,
         alarmDays TEXT,
-        deleteAfterRinging INTEGER,
-        vibrateWhenRinging INTEGER,
+        deleteAfterRinging BOOL,
+        vibrateWhenRinging BOOL,
         alarmLocationLat REAL,
         alarmLocationLng REAL
       )
@@ -48,3 +48,4 @@ class DataBase {
     });
   }
 }
+var DataBase data=DataBase();

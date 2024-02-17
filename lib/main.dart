@@ -1,23 +1,21 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:wakey/view_models/select_location_viewmodel.dart';
-import 'package:wakey/views/login_view.dart';
-import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wakey/view_models/home_viewmodel.dart';
+import 'package:wakey/view_models/select_location_viewmodel.dart';
 import 'package:wakey/view_models/set_alarm_viewmodel.dart';
 import 'package:wakey/view_models/stopwatch_viewmodel.dart';
 import 'package:wakey/views/home_view.dart';
 import 'package:wakey/views/set_alarm_view.dart';
 import 'package:wakey/views/stopwatch_view.dart';
 
+import 'firebase_options.dart';
 import 'services/location_service.dart';
 import 'views/select_location.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocationService.fetchCurrentLocation();
-
   try {
     await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform);

@@ -3,7 +3,7 @@ import 'package:sqflite/sqflite.dart';
 
 import '../models/alarm_model.dart';
 
-class DataBase {
+ class DataBase {
   static final DataBase instance = DataBase._privateConstructor();
   static Database? _database;
 
@@ -48,4 +48,3 @@ class DataBase {
     });
   }
 }
-var DataBase data=DataBase();

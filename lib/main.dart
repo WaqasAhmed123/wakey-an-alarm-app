@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xFFF0F757),
         primaryColorDark: const Color(0xFF34344A),
         scaffoldBackgroundColor: Colors.black,
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFF0F757)),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 123, 124, 100)),
         useMaterial3: true,
       ),
       home: const HomeView(),

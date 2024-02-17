@@ -47,6 +47,19 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                     ),
                     IconButton(
                         onPressed: () {
+                          debugPrint(setAlarmViewModel.alarmLabel.text);
+                          setAlarmViewModel.alarmLabel.text == ""
+                              ? ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: Colors.yellow,
+                                    content: Text("Alarm label can't be null",
+                                        style: textStyle(
+                                            textColor: const Color(
+                                                0xFF34344A))["titleSmall"]),
+                                    duration: const Duration(seconds: 2),
+                                  ),
+                                )
+                              : null;
                           // Handle the selected alarm time (selectedHour, selectedMinute, isAm)
                           // Save the selected time to your alarm data or perform other actions.
                         },
@@ -93,7 +106,9 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                     context: context),
                 listtileContainer(
                     leadingText: "Label",
-                    onTap: () => alarmLabelWidget(context: context),
+                    onTap: () => alarmLabelWidget(
+                          context: context,
+                        ),
                     tralingText: "",
                     context: context),
                 listtileContainer(

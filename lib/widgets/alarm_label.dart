@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../view_models/set_alarm_viewmodel.dart';
 
+// alarmLabelWidget({context,errorText,onChanged}) {
 alarmLabelWidget({context}) {
   final setAlarmViewModel =
       Provider.of<SetAlarmViewModel>(context, listen: false);
@@ -16,11 +17,13 @@ alarmLabelWidget({context}) {
               // width: double.maxFinite,
               // height: MediaQuery.sizeOf(context).height * 0.35,
               child: TextFormField(
+                // onChanged: onChanged,
                 controller: setAlarmViewModel.alarmLabel,
                 autocorrect: false,
                 enableSuggestions: false,
                 cursorColor: Theme.of(context).scaffoldBackgroundColor,
                 decoration: InputDecoration(
+                  // errorText:errorText,
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
                         color: Theme.of(context)

@@ -1,13 +1,16 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:wakey/models/alarm_model.dart';
+import 'package:wakey/models/user_model.dart';
+import 'package:wakey/view_models/select_location_viewmodel.dart';
 
 import '../services/database_service.dart';
 
 class SetAlarmViewModel extends ChangeNotifier {
   TextEditingController alarmLabel = TextEditingController();
-
+  
   // Map<String, dynamic> alarmDetails = {};
   Map<String, bool> alarmDays = {
     'Monday': false,
@@ -54,8 +57,11 @@ class SetAlarmViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  insertAlarm(){
-    AlarmModel alarmModel=AlarmModel(alarmDays: jsonEncode(alarmDays))
-    DataBase.instance.insertAlarm(alarm)
-  }
+  // insertAlarm(){
+  //   // String alarmDaysJson = jsonEncode(alarmDays);
+  //   SelectLocationViewModel  selectLocationViewModel=SelectLocationViewModel();
+  //   LatLng? alarmLocation = selectLocationViewModel.selectedAlarmLocation ?? UserModel.currentLocation;
+  //   AlarmModel alarmModel=AlarmModel(alarmDays: alarmDays,alarmTime: "$getSelectedHour:$getSelectedMin $getSelectedAmOrPm",alarmTitle: alarmLabel.text,alarmLocation: alarmLocation,deleteAfterRinging: delete)
+  //   DataBase.instance.insertAlarm(alarm)
+  // }
 }

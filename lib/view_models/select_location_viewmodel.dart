@@ -7,8 +7,8 @@ import '../models/user_model.dart';
 
 class SelectLocationViewModel extends ChangeNotifier {
   final Completer<GoogleMapController> controllerCompleter = Completer();
-
   LatLng? currentLocation = UserModel.currentLocation;
+  LatLng? selectedAlarmLocation;
   final Set<Marker> markers = {}; // Set to store markers on the map
   addTempMarker({point}) {
     markers.clear(); // Clear existing markers
@@ -24,7 +24,7 @@ class SelectLocationViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-void removeTempMarker() {
+  void removeTempMarker() {
     markers.clear(); // Clear existing markers
     notifyListeners();
   }

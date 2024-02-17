@@ -34,6 +34,8 @@ class _SelectLocationViewState extends State<SelectLocationView> {
               selectLocationViewModel.addTempMarker(point: point);
               List<Placemark> placemarks = await placemarkFromCoordinates(
                   point.latitude, point.longitude);
+              selectLocationViewModel.selectedAlarmLocation =
+                  LatLng(point.latitude, point.longitude);
               Placemark place = placemarks[0];
 
               // ignore: use_build_context_synchronously

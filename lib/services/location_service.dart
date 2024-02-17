@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:wakey/models/user_model.dart';
+import 'package:wakey/services/database_service.dart';
 
 class LocationService {
   static fetchCurrentLocation() async {
@@ -32,5 +33,4 @@ class LocationService {
     return permission == LocationPermission.always ||
         permission == LocationPermission.whileInUse;
   }
-
 }

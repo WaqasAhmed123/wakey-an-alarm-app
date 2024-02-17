@@ -10,12 +10,14 @@ import 'package:wakey/views/set_alarm_view.dart';
 import 'package:wakey/views/stopwatch_view.dart';
 
 import 'firebase_options.dart';
+import 'services/database_service.dart';
 import 'services/location_service.dart';
 import 'views/select_location.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocationService.fetchCurrentLocation();
+  await DataBase.instance.database;
   try {
     await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform);

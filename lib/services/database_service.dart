@@ -9,7 +9,7 @@ import '../models/alarm_model.dart';
 
   DataBase._privateConstructor();
 
-  Future<Database> get database async {
+  Future<Database> get database async { 
     if (_database != null) return _database!;
     _database = await _initDatabase();
     return _database!;

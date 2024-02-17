@@ -1,4 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:wakey/models/alarm_model.dart';
+
+import '../services/database_service.dart';
 
 class SetAlarmViewModel extends ChangeNotifier {
   TextEditingController alarmLabel = TextEditingController();
@@ -47,5 +52,10 @@ class SetAlarmViewModel extends ChangeNotifier {
   setSelectedAmOrPm({selectedAmOrPm}) {
     getSelectedAmOrPm = selectedAmOrPm;
     notifyListeners();
+  }
+
+  insertAlarm(){
+    AlarmModel alarmModel=AlarmModel(alarmDays: jsonEncode(alarmDays))
+    DataBase.instance.insertAlarm(alarm)
   }
 }

@@ -112,6 +112,12 @@ class _SetAlarmViewState extends State<SetAlarmView> {
                     tralingText: "",
                     context: context),
                 listtileContainer(
+                  leadingText: "Alarm Sound",
+                  onTap: () {},
+                  tralingText: "",
+                  context: context,
+                ),
+                listtileContainer(
                     leadingText: "Delete after Ringing",
                     onTap: () {},
                     tralingText: "",
